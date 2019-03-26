@@ -1,14 +1,50 @@
 :root{
-    --corail:#df6d14;
-    --citrouille:#ff8100;
+    --corail:#f39a55;
+    --orange:#ff8100;
+    --dark_orange:#c26100;
+    --light_orange:rgba(255, 108, 10, 0.553);
     --rouge:#ef040d;
     --vert:#34c924;
+}
+.text-blanc{
+    color: #fff !important;
+}
+.bg-light_orange{
+    color: #fff;
+    background-color: var(--light_orange)!important;
+}
+.bg-orange{
+    color: #fff;
+    background-color: var(--orange)!important;
+}
+.orange{
+    color: var(--orange)!important;
+}
+.bg-dark_orange{
+    color: #fff;
+    background-color: var(--dark_orange)!important;
+}
+.dark_orange{
+    color: var(--dark_orange)!important;
+}
+.bg-corail{
+    color: #fff;
+    background-color: var(--corail)!important;
+}
+.corail{
+    color: var(--corail)!important;
 }
 #navigation{
     position: relative;
     z-index: 10;
     margin-top: -25px;
     margin-bottom: -25px;
+}
+a{
+    color: var(--orange)!important;
+}
+ul{
+    list-style-type: none;
 }
 .carousel-item {
     height: 500px;
@@ -29,4 +65,7 @@ section{
     top: 20%;
     left: 50%;
     transform: translate(-50%,-20%);
+}
+.mentions li{
+    display: inline-block !important;
 }
