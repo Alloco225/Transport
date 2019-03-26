@@ -13,4 +13,13 @@ class Company extends Model
         // 'logo',
     ];
     // Relations
+    public function cars(){
+        return $this->hasMany('App\Car');
+    }
+    public function drivers(){
+        return $this->hasMany('App\Driver');
+    }
+    public function journeys(){
+        return $this->hasMany('App\Journey');
+    }
 }

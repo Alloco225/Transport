@@ -12,13 +12,13 @@ class Booking extends Model
         'description',
         'days',
         'user_id',
-        'company_id',
+        'journey_id',
     ];
     // Relations
     public function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsTo('App\User');
     }
-    public function companies(){
-        return $this->belongsTo('App\Company');
+    public function journeys(){
+        return $this->belongsTo('App\Journey');
     }
 }

@@ -287,12 +287,51 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2 bg-light">
-                <a href="" class="orange h4">Voir toutes les destinations</a>
+                <a href="" class="orange h4" id="hover-link-destinations">Voir toutes les destinations</a>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#hover-link-destinations').hover(function () {
+                            $('#hidden-destinations').toggle();
+                        });
+                    });
+                </script>
+            </div>
+            <div class="destinations" id="hidden-destinations" style="display:none;">
+                <div class="row d-flex justify-content-around">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="img/city-day.jpeg" alt="" class="card-img-top">
+                            <div class="card-footer">
+                                <p>A partir de 6000F</p>
+                                <p>Daloa, Cote d'Ivoire</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="img/city-dark-lights-8047.jpg" alt="" class="card-img-top">
+                            <div class="card-footer">
+                                <p>A partir de 6000F</p>
+                                <p>Daloa, Cote d'Ivoire</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="img/city-buildings.jpeg" alt="" class="card-img-top">
+                            <div class="card-footer">
+                                <p>A partir de 6000F</p>
+                                <p>Daloa, Cote d'Ivoire</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- Newsletter -->
         <section id="newsletter" class="container-fluid bg-corail px-5 justify-content-center">
-            <div class="row align-items-center">
+            <div class="row container-fluid align-items-center">
                 <div class="col-8">
                     <h4>Souscrivez à notre boite aux lettre</h4>
                     <p>Et restez au parfum de nos toutes dernières promotions !</p>
@@ -300,7 +339,7 @@
                 <div class="col">
                     <form action="">
                         <div class="input-group">
-                            <input type="text" name="email" placeholder="Adresse Email">
+                            <input class="form-control" type="text" name="email" placeholder="Adresse Email">
                             <div class="input-group-append">
                                 <button class="btn bg-orange" type="button">Souscrire !</button>
                             </div>
