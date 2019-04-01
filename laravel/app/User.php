@@ -38,20 +38,14 @@ class User extends Authenticatable
     ];
 
     // Relations
-    public function comments(){
-        return $this->hasMany('App\Comment');
+    public function journeysusers(){
+        return $this->hasMany('App\JourneyUser');
     }
-    public function companies(){
-        return $this->hasMany('App\Company');
+    public function luggages(){
+        return $this->hasMany('App\Luggage');
     }
     public function roles(){
         return $this->belongsTo('App\Role');
     }
     // 
-    public function projects(){
-        return $this->belongsToMany('App\Project');
-    }
-    public function tasks(){
-        return $this->belongsToMany('App\Task');
-    }
 }

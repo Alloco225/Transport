@@ -22,7 +22,7 @@
     <header class="container-fluid border border-secondary">
         <div class="row justify-content-between">
             <div class="col col-sm-2">
-                <img src="{{ URL::asset() }}" alt="" class="img-fluid">
+                <img src="" alt="" class="img-fluid">
             </div>
             <div class="col col-sm-6 pull-right">
                 <ul class="nav justify-content-end">

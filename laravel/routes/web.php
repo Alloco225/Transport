@@ -11,12 +11,17 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Auth::routes();
-
 Route::get('/', function(){
-    return view('pages.index');   
+    return view('welcome');   
 });
+
+Route::get('/administration', function(){
+    return view('pages.administration.dashboard');
+});
+
+//
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('companies', 'CompaniesController');

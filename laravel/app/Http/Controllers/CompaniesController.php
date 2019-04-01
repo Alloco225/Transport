@@ -16,9 +16,10 @@ class CompaniesController extends Controller
     public function index()
     {
         //
-        $companies = Company::all();
-
-        return view('companies.index', ['companies' => $companies]);
+        // $companies = DB::select('SELECT * FROM companies');
+        $companies = Company::orderBy('name', 'asc')->get();
+        return view('pages.companies.index', 
+        ['companies' => $companies, 'title' => 'companies', 'active' => 'active']);
     }
 
     /**
@@ -29,7 +30,7 @@ class CompaniesController extends Controller
     public function create()
     {
         //
-        return view('companies.create');
+        return view('pages.companies.create')->with('active', 'active');
     }
 
     /**
@@ -41,19 +42,29 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         //
-        if(Auth::check()){
-            $company = Company::create([
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                // 'user_id' => $request->user()->id,
-                'user_id' => Auth::user()->id
-            ]);
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        
+        $company = new Company;
+        $company->name = $request->input('name');
+        $company->description = $request->input('description');
+        $company->save();
+        
+        return redirect('/companies')->with('success', 'Compagnie créée !')->with('active', 'active');
+        // if(Auth::check()){
+        //     $company = Company::create([
+        //         'name' => $request->input('name'),
+        //         'description' => $request->input('description'),
+        //         // 'user_id' => $request->user()->id,
+        //         'user_id' => Auth::user()->id
+        //     ]);
 
-            if($company){
-                return redirect()->route('companies.show',['company'=>$company->id])->with('success', 'Company created successfully');
-            }
-        }
-        return back()->withInput()->with('errors', 'Error creating company');
+        //     if($company){
+        //         return redirect()->route('pages.companies.show',['company'=>$company->id])->with('success', 'Company created successfully');
+        //     }
+        // }
+        // return back()->withInput()->with('errors', 'Error creating company');
     }
 
     /**
@@ -68,7 +79,7 @@ class CompaniesController extends Controller
         // $company = Company::where('id', $company->id)->first();
         $company = Company::find($company->id);
         
-        return view('companies.show', ['company' => $company]);
+        return view('pages.companies.show', ['company' => $company])->with('active', 'active');
     }
 
     /**
@@ -82,7 +93,7 @@ class CompaniesController extends Controller
         //
         $company = Company::find($company->id);
         
-        return view('companies.edit', ['company' => $company]);
+        return view('pages.companies.edit', ['company' => $company])->with('active', 'active');
     }
 
     /**
@@ -94,16 +105,27 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //Save data
-        $companyUpdate = Company::where('id', $company->id)->update([
-            'name'=> $request->input('name'),
-            'description'=> $request->input('description')
+        // 
+        $this->validate($request, [
+            'name' => 'required'
         ]);
-        if($companyUpdate){
-            return redirect()->route('companies.show',['company'=>$company->id])->with('success','Company updated successfully');
-        }
-        //Redirect
-        return back()->withInput();
+        
+        $company = Company::find($company->id);
+        $company->name = $request->input('name');
+        $company->description = $request->input('description');
+        $company->save();
+        
+        return redirect('/companies')->with('success', 'Compagnie mise à jour !')->with('active', 'active');
+        //Save data
+        // $companyUpdate = Company::where('id', $company->id)->update([
+        //     'name'=> $request->input('name'),
+        //     'description'=> $request->input('description')
+        // ]);
+        // if($companyUpdate){
+        //     return redirect()->route('pages.companies.show',['company'=>$company->id])->with('success','Company updated successfully');
+        // }
+        // //Redirect
+        // return back()->withInput();
     }
 
     /**
@@ -114,12 +136,15 @@ class CompaniesController extends Controller
      */
     public function destroy(Company $company)
     {
+        $company = Company::find($company->id);
+        $company->delete();
+        return redirect('/companies')->with('success', 'Compagnie supprimée !')->with('active', 'active');
         //
-        $findCompany = Company::find($company->id);
-        if($findCompany->delete()){
-            // Redirect
-            return redirect()->route('companies.index')->with('success', 'Company deleted successfully');
-        }
-        return back()->withInput()->with('errors', 'Company could not be deleted');
+        // $findCompany = Company::find($company->id);
+        // if($findCompany->delete()){
+        //     // Redirect
+        //     return redirect()->route('pages.companies.index')->with('success', 'Company deleted successfully');
+        // }
+        // return back()->withInput()->with('errors', 'Company could not be deleted');
     }
 }
