@@ -23,16 +23,16 @@ class CreateBookingsTable extends Migration
         // 
         Schema::table('bookings', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('journey_id')->nullable();
-            $table->foreign('journey_id')->references('id')->on('stations');
+            $table->foreign('journey_id')->references('id')->on('stations')->onDelete('cascade');
 
             $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             $table->unsignedBigInteger('car_id')->nullable();
-            $table->foreign('car_id')->references('id')->on('cars');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
         });
     }
 

@@ -62,7 +62,7 @@
                     <div class="bg-sombre pl-3 pl-md-3">
                         <ul class="navbar-nav w-100 ml-5" id="sidebar-nav">
                             <li class="nav-item">
-                                <a href="{{url('/companies')}}" class="nav-link active">
+                            <a href="{{url('/companies')}}" class="nav-link {{ $active ?? '' }}">
                                     <span>Compagnies</span>
                                     <span class="badge bg-normal">{{ App\Company::count()}}</span>
                                 </a>
@@ -93,7 +93,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('/users')}}" class="nav-link "><span>Voyageurs</span>
-                                    <span class="badge bg-normal">{{ App\User::count()}}</span>
+                                    <span class="badge bg-normal">{{ App\User::where('role_id', '3')->count()}}</span>
                                 </a>
                             </li>
                             <!-- <li class="nav-item">

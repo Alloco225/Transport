@@ -22,14 +22,14 @@ class CreateLuggagesTable extends Migration
         }
         // 
         Schema::table('luggages', function (Blueprint $table) {
-            $table->unsignedBigInteger('luggages_type_id');
-            $table->foreign('luggages_type_id')->references('id')->on('luggages_type');
+            $table->unsignedBigInteger('luggages_type_id')->nullable();
+            $table->foreign('luggages_type_id')->references('id')->on('luggages_type')->onDelete('set null');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
-            $table->unsignedBigInteger('journeys_users_id')->nullable();
-            $table->foreign('journeys_users_id')->references('id')->on('journeys_users');
+            $table->unsignedBigInteger('journeys_users_id');
+            $table->foreign('journeys_users_id')->references('id')->on('journeys_users')->onDelete('cascade');
 
         });
     }

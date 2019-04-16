@@ -21,7 +21,7 @@ class CreateDriversTable extends Migration
                 $table->date('birth_date');
                 $table->string('email')->unique();
                 $table->string('phone')->unique();
-                // $table->string('picture')->nullable();
+                $table->string('picture');
                 $table->string('address');
                 $table->timestamps();
             });

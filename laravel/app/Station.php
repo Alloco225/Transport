@@ -13,10 +13,10 @@ class Station extends Model
         'city_id',
     ];
     // Relations
-    public function companies(){
+    public function company(){
         return $this->belongsTo('App\Company');
     }
-    public function cities(){
+    public function city(){
         return $this->belongsTo('App\City');
     }
 }

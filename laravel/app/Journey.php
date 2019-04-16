@@ -16,10 +16,13 @@ class Journey extends Model
         'company_id',
     ];
     // Relations
-    public function stations(){
-        return $this->belongsTo('App\Station');
-    }
     public function companies(){
         return $this->belongsTo('App\Company');
+    }
+    public function departure_station(){
+        return $this->belongsTo('App\Station');
+    }
+    public function arrival_station(){
+        return $this->belongsTo('App\Station');
     }
 }

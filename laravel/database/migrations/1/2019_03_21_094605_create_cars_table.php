@@ -24,7 +24,7 @@ class CreateCarsTable extends Migration
         // 
         Schema::table('cars', function (Blueprint $table) {
             $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

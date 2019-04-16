@@ -12,7 +12,7 @@ class Car extends Model
         'company_id',
     ];
     // Relations
-    public function companies(){
+    public function company(){
         return $this->belongsTo('App\Company');
     }
 }

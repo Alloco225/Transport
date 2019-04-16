@@ -25,13 +25,13 @@ class CreateJourneysTable extends Migration
         // 
         Schema::table('journeys', function (Blueprint $table) {
             $table->unsignedBigInteger('departure_station_id');
-            $table->foreign('departure_station_id')->references('id')->on('stations');
+            $table->foreign('departure_station_id')->references('id')->on('stations')->onDelete('cascade');
 
             $table->unsignedBigInteger('arrival_station_id');
-            $table->foreign('arrival_station_id')->references('id')->on('stations');
+            $table->foreign('arrival_station_id')->references('id')->on('stations')->onDelete('cascade');
 
             $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             // $table->unsignedBigInteger('car_id');
             // $table->foreign('car_id')->references('id')->on('cars');

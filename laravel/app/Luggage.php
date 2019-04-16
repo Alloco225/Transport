@@ -14,7 +14,7 @@ class Luggage extends Model
         'journeys_users_id',
     ];
     // Relations
-    public function users(){
+    public function user(){
         return $this->belongsTo('App\User');
     }
     public function luggagesType(){

@@ -13,12 +13,12 @@ class Driver extends Model
         'birth_date',
         'email',
         'phone',
-        //'picture',
+        'picture',
         'address',
         'company_id',
     ];
     // Relations
-    public function companies(){
+    public function company(){
         return $this->belongsTo('App\Company');
     }
 }

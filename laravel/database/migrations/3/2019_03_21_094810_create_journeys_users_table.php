@@ -16,16 +16,17 @@ class CreateJourneysUsersTable extends Migration
         if(!Schema::hasTable('journeys_users')){
             Schema::create('journeys_users', function (Blueprint $table) {
                 $table->bigIncrements('id');
+                $table->string('code');
                 $table->timestamps();
             });
         }
         // 
         Schema::table('journeys_users', function (Blueprint $table) {
             $table->unsignedBigInteger('journey_id');
-            $table->foreign('journey_id')->references('id')->on('journeys');
+            $table->foreign('journey_id')->references('id')->on('journeys')->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

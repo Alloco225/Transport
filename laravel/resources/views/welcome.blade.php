@@ -20,14 +20,6 @@
                         <img class="d-block w-100" src="img/slide3.jpg" alt="Third slide">
                     </div>
                 </div>
-                <!-- <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a> -->
             </div><!-- /Carousel -->
             <!-- Show case text -->
             <div id="showcase-overlay" class="container d-flex justify-content-between">
@@ -138,8 +130,9 @@
         <!-- Promo Destinations -->
         <section id="destinations-promo" class="container-fluid pt-2 my-2 bg-corail text-dark">
             <div class="row d-flex justify-content-around">
+                @foreach ($cities_to_show as $city)
                 <div class="col-3 bg-light">
-                    <h5 class="display-4 orange">Destination</h5>
+                    <h5 class="display-4 orange">{{$city->name}}</h5>
                     <div class="row">
                         <div class="display-2">-50%</div>
                     </div>
@@ -152,34 +145,7 @@
                         <a href="" class="btn bg-orange text-light w-80">J'en profite</a>
                     </div>
                 </div>
-                <div class="col-3 bg-light">
-                    <h5 class="display-4 orange">Destination</h5>
-                    <div class="row">
-                        <div class="display-2">-50%</div>
-                    </div>
-                    <div class="row">
-                        <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, incidunt voluptatem!
-                            Fugiat eum temporibus esse debitis, iure inventore asperiores eos tempora! Corporis, est velit
-                            suscipit sequi perspiciatis rem repudiandae ipsum?</p>
-                    </div>
-                    <div class="row justify-content-center my-1">
-                        <a href="" class="btn bg-orange text-light w-80">J'en profite</a>
-                    </div>
-                </div>
-                <div class="col-3 bg-light">
-                    <h5 class="display-4 orange">Destination</h5>
-                    <div class="row">
-                        <div class="display-2">-50%</div>
-                    </div>
-                    <div class="row">
-                        <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, incidunt voluptatem!
-                            Fugiat eum temporibus esse debitis, iure inventore asperiores eos tempora! Corporis, est velit
-                            suscipit sequi perspiciatis rem repudiandae ipsum?</p>
-                    </div>
-                    <div class="row justify-content-center my-1">
-                        <a href="" class="btn bg-orange text-light w-80">J'en profite</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row justify-content-center my-2 bg-light">
                 <a href="" class="orange h4">Voir toutes les promotions</a>
@@ -188,16 +154,18 @@
         <!-- Meilleures Destinations -->
         <section id="destinations" class="container-fluid pt-2 my-2 bg-light">
             <div class="row d-flex justify-content-around">
+                @foreach ($cities_to_show as $city_to_show)
                 <div class="col-md-3">
                     <div class="card">
                         <img src="img/city-day.jpeg" alt="" class="card-img-top">
                         <div class="card-footer">
                             <p>A partir de 6000F</p>
-                            <p>Daloa, Cote d'Ivoire</p>
+                            <p>{{$city_to_show->name}}, Cote d'Ivoire</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                @endforeach
+                {{-- <div class="col-md-3">
                     <div class="card">
                         <img src="img/city-dark-lights-8047.jpg" alt="" class="card-img-top">
                         <div class="card-footer">
@@ -214,7 +182,7 @@
                             <p>Daloa, Cote d'Ivoire</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row justify-content-center my-2 bg-light">
                 <a href="" class="orange h4" id="hover-link-destinations">Voir toutes les destinations</a>
@@ -229,16 +197,16 @@
             </div>
             <div class="destinations" id="hidden-destinations" style="display:none;">
                 <div class="row d-flex justify-content-around">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img/city-day.jpeg" alt="" class="card-img-top">
-                            <div class="card-footer">
-                                <p>A partir de 6000F</p>
-                                <p>Daloa, Cote d'Ivoire</p>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="img/city-day.jpeg" alt="" class="card-img-top">
+                                <div class="card-footer">
+                                    <p>A partir de 6000F</p>
+                                    <p>Daloa, Cote d'Ivoire</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <div class="card">
                             <img src="img/city-dark-lights-8047.jpg" alt="" class="card-img-top">
                             <div class="card-footer">
@@ -255,7 +223,7 @@
                                 <p>Daloa, Cote d'Ivoire</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -337,13 +305,9 @@
                         <div class="row d-flex flex-column">
                             <h5>Nos Compagnies</h5>
                             <ul class="mentions">
-                                <li><a href="" class="text-blanc">UTB</a></li>
-                                <li><a href="" class="text-blanc">UTB</a></li>
-                                <li><a href="" class="text-blanc">UTB</a></li>
-                                <br>
-                                <li><a href="" class="text-blanc">UTB</a></li>
-                                <li><a href="" class="text-blanc">UTB</a></li>
-                                <li><a href="" class="text-blanc">UTB</a></li>
+                                @foreach ($companies as $company)
+                                    <li><a href="" class="text-blanc">{{$company->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

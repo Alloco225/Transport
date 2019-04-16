@@ -10,9 +10,12 @@ class Company extends Model
     protected $fillable = [
         'name',
         'description',
-        // 'logo',
+        'logo',
     ];
     // Relations
+    public function bookings(){
+        return $this->hasMany('App\Booking');
+    }
     public function cars(){
         return $this->hasMany('App\Car');
     }
@@ -21,5 +24,8 @@ class Company extends Model
     }
     public function journeys(){
         return $this->hasMany('App\Journey');
+    }
+    public function stations(){
+        return $this->hasMany('App\Station');
     }
 }

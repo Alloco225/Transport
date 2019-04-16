@@ -15,4 +15,7 @@ class City extends Model
     public function stations(){
         return $this->hasMany('App\Station');
     }
+    public function users(){
+        return $this->hasMany('App\User');
+    }
 }

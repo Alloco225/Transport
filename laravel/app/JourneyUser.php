@@ -8,17 +8,18 @@ class JourneyUser extends Model
 {
     //
     protected $fillable = [
+        'code',
         'journey_id',
         'user_id',
     ];
     // Relations
-    public function journeys(){
+    public function journey(){
         return $this->belongsTo('App\Journey');
     }
-    public function users(){
+    public function user(){
         return $this->belongsTo('App\User');
     }
     public function luggages(){
-        return $this->hasMany('App\Luggages');
+        return $this->hasMany('App\Luggage');
     }
 }

@@ -14,17 +14,17 @@
         <!-- Authentication Links -->
         @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}" data-toggle="modal" data-target="#login"><i class="fa fa-user"></i>{{ __('Login') }}</a>
+                <a class="nav-link" href="{{ route('login') }}" data-toggle="modal" data-target="#login"><i class="fa fa-user"></i>{{ __('Se connecter') }}</a>
             </li>
             @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}" data-toggle="modal" data-target="#register"><i class="fa fa-user-plus"></i>{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}" data-toggle="modal" data-target="#register"><i class="fa fa-user-plus"></i>{{ __("S'inscrire") }}</a>
                 </li>
             @endif
         @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
+                    {{ Auth::user()->first_name." ".Auth::user()->last_name }} <span class="caret"></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -41,11 +41,11 @@
             </li>
         @endguest
         </ul>
-        <nav aria-label="breadcrumb" class="">
+        {{-- <nav aria-label="breadcrumb" class="">
             <ol class="breadcrumb">
                 <span class="text-mutted mr-2">Vous êtes ici :</span>
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
             </ol>
-        </nav>
+        </nav> --}}
     </div>
 </div>

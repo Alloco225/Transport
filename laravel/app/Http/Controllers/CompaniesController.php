@@ -18,8 +18,8 @@ class CompaniesController extends Controller
         //
         // $companies = DB::select('SELECT * FROM companies');
         $companies = Company::orderBy('name', 'asc')->get();
-        return view('pages.companies.index', 
-        ['companies' => $companies, 'title' => 'companies', 'active' => 'active']);
+        return view('administration.companies.index', 
+        ['companies' => $companies, 'title' => 'Companies', 'active' => 'active']);
     }
 
     /**
@@ -30,7 +30,7 @@ class CompaniesController extends Controller
     public function create()
     {
         //
-        return view('pages.companies.create')->with('active', 'active');
+        return view('administration.companies.create')->with('active', 'active');
     }
 
     /**
@@ -51,20 +51,7 @@ class CompaniesController extends Controller
         $company->description = $request->input('description');
         $company->save();
         
-        return redirect('/companies')->with('success', 'Compagnie créée !')->with('active', 'active');
-        // if(Auth::check()){
-        //     $company = Company::create([
-        //         'name' => $request->input('name'),
-        //         'description' => $request->input('description'),
-        //         // 'user_id' => $request->user()->id,
-        //         'user_id' => Auth::user()->id
-        //     ]);
-
-        //     if($company){
-        //         return redirect()->route('pages.companies.show',['company'=>$company->id])->with('success', 'Company created successfully');
-        //     }
-        // }
-        // return back()->withInput()->with('errors', 'Error creating company');
+        return redirect('/companies')->with('success', "Compagnie $company->name ajoutée !")->with('active', 'active');
     }
 
     /**
@@ -79,7 +66,7 @@ class CompaniesController extends Controller
         // $company = Company::where('id', $company->id)->first();
         $company = Company::find($company->id);
         
-        return view('pages.companies.show', ['company' => $company])->with('active', 'active');
+        return view('administration.companies.show', ['company' => $company])->with('active', 'active');
     }
 
     /**
@@ -93,7 +80,7 @@ class CompaniesController extends Controller
         //
         $company = Company::find($company->id);
         
-        return view('pages.companies.edit', ['company' => $company])->with('active', 'active');
+        return view('administration.companies.edit', ['company' => $company])->with('active', 'active');
     }
 
     /**
@@ -116,16 +103,6 @@ class CompaniesController extends Controller
         $company->save();
         
         return redirect('/companies')->with('success', 'Compagnie mise à jour !')->with('active', 'active');
-        //Save data
-        // $companyUpdate = Company::where('id', $company->id)->update([
-        //     'name'=> $request->input('name'),
-        //     'description'=> $request->input('description')
-        // ]);
-        // if($companyUpdate){
-        //     return redirect()->route('pages.companies.show',['company'=>$company->id])->with('success','Company updated successfully');
-        // }
-        // //Redirect
-        // return back()->withInput();
     }
 
     /**
@@ -139,12 +116,5 @@ class CompaniesController extends Controller
         $company = Company::find($company->id);
         $company->delete();
         return redirect('/companies')->with('success', 'Compagnie supprimée !')->with('active', 'active');
-        //
-        // $findCompany = Company::find($company->id);
-        // if($findCompany->delete()){
-        //     // Redirect
-        //     return redirect()->route('pages.companies.index')->with('success', 'Company deleted successfully');
-        // }
-        // return back()->withInput()->with('errors', 'Company could not be deleted');
     }
 }
